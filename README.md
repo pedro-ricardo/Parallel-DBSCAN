@@ -8,9 +8,48 @@ The major difference in this repository is in the `Makefile` that is now more co
 
 # Dependencies
 The code has some clear dependencies:
-- PNETCDF: found [here](https://parallel-netcdf.github.io/wiki/Download.html)
-- MPI: found [here for openmpi](https://www.open-mpi.org/software/ompi/v4.0/) or [here for mpich](https://www.mpich.org/downloads/2/)
-- BOOST: found [here](https://www.boost.org/users/download/)
+
+### MPI
+Two different MPI libraries were tested with this code. The first one is OpenMPI that can be downloaded [here](https://www.open-mpi.org/software/ompi/v4.0/) and the second one is MPICH that can be downloaded [here](https://www.mpich.org/downloads/2/).
+The example below is for OpenMPI library:
+```sh
+$ wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.5.tar.gz
+$ tar -xf openmpi-4.0.5.tar.gz
+$ cd openmpi-4.0.5
+$ mkdir build
+$ cd build
+# Replace <YourInstalationDir> with a new directory to install MPI to
+$ ../configure --prefix=<YourInstalationDir>
+$ make -j
+$ make install
+```
+
+### PnetCDF
+The code can be downloaded [here](https://parallel-netcdf.github.io/wiki/Download.html).
+To install for this code usage, the following steps and configurations will do:
+```sh
+$ wget https://parallel-netcdf.github.io/Release/pnetcdf-1.12.1.tar.gz
+$ tar -xf pnetcdf-1.12.1.tar.gz
+$ cd pnetcdf-1.12.1
+$ mkdir build
+$ cd build
+# Replace <YourInstalationDir> with a new directory to install PnetCDF to
+# Replace <YourMpiInstalationDir> for the folder containing the MPI instalation
+$ ../configure --prefix=<YourInstalationDir> --with-mpi=<YourMpiInstalationDir> CC=mpicc --enable-shared
+$ make -j
+$ make install
+```
+
+### BOOST
+The code can be downloaded [here](https://www.boost.org/users/download/). And the instalation steps are something like the following:
+```sh
+$ wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.gz
+$ tar -xf boost_1_74_0.tar.gz
+$ cd boost_1_74_0
+# Replace <YourInstalationDir> with a new directory to install Boost to
+$ ./bootstrap.sh --prefix=<YourInstalationDir>
+$ ./b2 install --with-atomic --with-chrono --with-thread --with-system --with-filesystem
+```
 
 Uppon installing these libraries one should add the instalation paths to the Makefile like:
 ```
