@@ -208,7 +208,7 @@ namespace NWUClustering {
           }
         }
 
-        pt = NULL;
+        delete[] pt;
 
         file.close();
       } else {

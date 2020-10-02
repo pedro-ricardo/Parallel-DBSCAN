@@ -11,6 +11,12 @@ namespace NWUClustering {
     int m_i_dims; // number of dimensions
     int m_i_num_points; // number of points in `m_points` attribute
     interval* m_box; // struct, containing attribute `lower` & `upper`.
+    Points(){
+        m_box=NULL;
+    }
+    ~Points(){
+        if (m_box){ delete[] m_box; }
+    }
   };
 
   struct Points_Outer {
@@ -21,6 +27,12 @@ namespace NWUClustering {
     int m_i_dims; // number of dimensions
     int m_i_num_points; // number of points in `m_points` attribute
     interval* m_box; // struct, containing attribute `lower` & `upper`.
+    Points_Outer(){
+        m_box=NULL;
+    }
+    ~Points_Outer(){
+        if (m_box){ delete[] m_box; }
+    }
   };
 
   class Clusters {
