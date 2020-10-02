@@ -40,7 +40,7 @@ $ make -j
 $ make install
 ```
 
-### BOOST
+### Boost
 The code can be downloaded [here](https://www.boost.org/users/download/). And the instalation steps are something like the following:
 ```sh
 $ wget https://dl.bintray.com/boostorg/release/1.74.0/source/boost_1_74_0.tar.gz
@@ -52,7 +52,7 @@ $ ./b2 install --with-atomic --with-chrono --with-thread --with-system --with-fi
 ```
 
 Uppon installing these libraries one should add the instalation paths to the Makefile like:
-```
+```makefile
 # Dependencies
 # ----------------
 PNET_DIR = /opt/apps/pnetcdf/1.12.1-gcc-9.1.3-mpich-3.3.1
