@@ -487,7 +487,7 @@ namespace NWUClustering {
     }
 
     // free the allocated memory
-    for(i = 0; i < nproc; i++)
+    for(i = 0; i < internal_nodes; i++)
       delete [] nodes_gbox[i];
 
     delete [] nodes_gbox;
