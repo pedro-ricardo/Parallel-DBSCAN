@@ -208,9 +208,6 @@ namespace NWUClustering {
           }
         }
 
-
-        free(pt);
-        
         pt = NULL;
 
         file.close();
