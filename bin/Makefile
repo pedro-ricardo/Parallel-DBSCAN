@@ -59,12 +59,22 @@ kdtree2.o: $(SRC)/kdtree2.cpp $(SRC)/kdtree2.hpp
 utils.o: $(SRC)/utils.cpp
 mpi_main.o: $(SRC)/mpi_main.cpp
 
+# Clear dir
 clean:
 	rm -f *.o $(EXE)
 
+# Serial Test Execution
 test:
 	./$(EXE) -i $(i) -b -m $(m) -e $(e) -o $(output)
 
+# Parallel Test Execution
+ptest:
+	mpirun -n 2 ./$(EXE) -i $(i) -b -m $(m) -e $(e) -o $(output)
+
+# Memory debug on Serial Execution
 memtest:
 	$(VALCMD) $(VALFLAGS) ./$(EXE) -i $(i) -b -m $(m) -e $(e) -o $(output) &>$(VALFILE)
 
+# Memory debug on Parallel Execution
+pmemtest:
+	$(VALCMD) $(VALFLAGS) mpirun -n 2 ./$(EXE) -i $(i) -b -m $(m) -e $(e) -o $(output) &>$(VALFILE)
