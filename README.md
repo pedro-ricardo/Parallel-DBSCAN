@@ -1,10 +1,22 @@
 # MPI DBSCAN Implementation
 This repository has a running version of the Disjoint-Set Data Structure based Parallel DBSCAN clustering implementation (MPI version) by **Md. Mostofa Ali Patwary** from *EECS Department, Northwestern University* (mpatwary@eecs.northwestern.edu)
 
-The code from [dbscan-v1.0.0.tar.gz](http://cucis.ece.northwestern.edu/projects/Clustering/download_code_dbscan.html) is used with the changes applyed by @dhoule in [Parallel-DBSCAN](https://github.com/dhoule/Parallel-DBSCAN) repository.
+The code from [dbscan-v1.0.0.tar.gz](http://cucis.ece.northwestern.edu/projects/Clustering/download_code_dbscan.html) is used with the changes applyed by @dhoule in [Parallel-DBSCAN](https://github.com/dhoule/Parallel-DBSCAN) repository and also several memory leak fixes of my own.
 
 ## Why this version
-The major difference in this repository is in the `Makefile` that is now more comprehensive and easy to use and also fixed a function declaration that was causing the code to break with optimization flags like `-O3`
+The major differences in this repository are:
+- The `Makefile` that is now more comprehensive and easy to use
+- Fixed the runtime error with optimization flags like `-O3`
+- Several memory leaks solved with *valgrind*
+- Tested parallel and serial with:
+    | Library  | Version  |
+    | -------- | -------- |
+    | GCC      | 9.3.1    |
+    | Valgrind | 3.15.0   |
+    | MPICH    | 3.3.1    |
+    | Open MPI | 4.0.1    |
+    | PnetCDF  | 1.12.1   |
+    | Boost    | 1.68.0   |
 
 # Dependencies
 The code has some clear dependencies:
